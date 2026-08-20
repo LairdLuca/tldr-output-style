@@ -1,0 +1,15 @@
+{
+  "description": "TL;DR mode hook: closes multi-paragraph replies with a one-glance summary",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks-handlers/session-start.sh\""
+          }
+        ]
+      }
+    ]
+  }
+}

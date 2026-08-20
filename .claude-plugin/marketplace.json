@@ -1,0 +1,24 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "tldr-output-style",
+  "description": "TL;DR output style for Claude Code",
+  "owner": {
+    "name": "Luca Sanna",
+    "url": "https://github.com/LairdLuca"
+  },
+  "plugins": [
+    {
+      "name": "tldr-output-style",
+      "source": "./plugins/tldr-output-style",
+      "description": "Closes every reply of two or more prose paragraphs with a short TL;DR carrying the conclusion",
+      "version": "1.0.0",
+      "author": {
+        "name": "Luca Sanna",
+        "url": "https://github.com/LairdLuca"
+      },
+      "homepage": "https://github.com/LairdLuca/tldr-output-style",
+      "license": "MIT",
+      "keywords": ["output-style", "hooks", "summary", "tldr"]
+    }
+  ]
+}

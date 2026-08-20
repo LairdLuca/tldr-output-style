@@ -1,0 +1,8 @@
+{
+  "name": "tldr-output-style",
+  "version": "1.0.0",
+  "description": "Closes every reply of two or more prose paragraphs with a short TL;DR carrying the conclusion",
+  "author": {
+    "name": "Luca Sanna"
+  }
+}
