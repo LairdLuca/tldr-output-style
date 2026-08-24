@@ -16,10 +16,23 @@ if [ ! -r "$INSTRUCTIONS" ]; then
 fi
 
 # JSON-escape the file. Backslashes first, then quotes: doing it the other way
-# round would re-escape the backslashes this very step inserts. Then drop the CR
-# of any Windows line ending, and fold the newlines into a literal \n.
-escaped=$(sed -e 's/\\/\\\\/g' -e 's/"/\\"/g' -e 's/\r$//' "$INSTRUCTIONS" \
-  | awk '{ printf "%s\\n", $0 }')
+# round would re-escape the backslashes this very step inserts. Tabs come after
+# both, for the same reason -- the backslash they introduce must be the last one
+# added. Every control character still standing after that, the CR of a Windows
+# line ending included, is illegal inside a JSON string and means nothing in
+# markdown, so it is dropped rather than escaped. Then the newlines are folded
+# into a literal \n.
+#
+# The tab is matched through a variable holding a real one, and the leftovers
+# through [[:cntrl:]]: both are POSIX, whereas \t and \r inside a sed expression
+# are a GNU extension that other seds are free to read as the bare letter.
+tab=$'\t'
+escaped=$(sed \
+  -e 's/\\/\\\\/g' \
+  -e 's/"/\\"/g' \
+  -e "s/$tab/\\\\t/g" \
+  -e 's/[[:cntrl:]]//g' \
+  "$INSTRUCTIONS" | awk '{ printf "%s\\n", $0 }')
 
 if [ -z "$escaped" ]; then
   exit 0
