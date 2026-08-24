@@ -16,7 +16,7 @@
       },
       "source": "./plugins/tldr-output-style",
       "category": "learning",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "keywords": ["output-style", "hooks", "summary", "tldr"],
       "homepage": "https://github.com/LairdLuca/tldr-output-style/tree/main/plugins/tldr-output-style"
     }
